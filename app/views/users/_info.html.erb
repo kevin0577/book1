@@ -1,7 +1,7 @@
 <table class="table">
 	<tbody>
 		<tr>
-			<%= attahment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+			<%= attachment_image_tag(@user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg") %>
 		</tr>
 		<tr>
 			<th>name</th>
@@ -15,5 +15,5 @@
 </table>
 
 <div class="row">
-	<%= link_to edit_user_path(@user), class: "col-xs-12 btn bth-defanlt glyphicon glyphicon-wrench" %>
+	<%= link_to "", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 </div>

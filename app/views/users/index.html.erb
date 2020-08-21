@@ -16,10 +16,10 @@
 			<tbody>
 				<% @users.each do |u| %>
 				<tr>
-					<td><%= attahment_image_tag(u.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+					<td><%= attachment_image_tag(u, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
 					</td>
 					<td><%= u.name %></td>
-					<td><%= link_to "show" user_path(u.id) %></td>
+					<td><%= link_to "show", user_path(u.id) %></td>
 				</tr>
 				<% end %>
 			</tbody>

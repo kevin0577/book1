@@ -1,6 +1,6 @@
 <h1>User info</h1>
 <%= render "layouts/error", obj: @user %>
-<%= from_for(@user) do |f| %>
+<%= form_for(@user) do |f| %>
 	<div class="field">
 		<%= f.label :name %>
 		<%= f.text_field :name %>
