@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
-	before_action :authentincate_user!
+	before_action :authenticate_user!
 	def index
 		@books = Book.all
 		@newbook = Book.new
-		@users = User.all
+		@user = current_user
 	end
 
 	def show
@@ -24,9 +24,12 @@ class BooksController < ApplicationController
 		@newbook.user_id = current_user.id
 		if @newbook.save
 			flash[:notice] = "successfully"
-			redirect_to book_path(@book.current_user)
+			redirect_to book_path(@newbook)
 		else
-			remder "index"
+			@books = Book.all
+			@user = current_user
+			render :index
+		end
 	end
 
 	def update
@@ -36,7 +39,7 @@ class BooksController < ApplicationController
 		   flash[:notice] = "successfully"
 		   redirect_to book_path(@book.current_user)
 		else
-			render "edit"
+			render :edit
 		end
 	end
 
@@ -49,6 +52,6 @@ class BooksController < ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:title,:boby,:user_id)
+		params.require(:book).permit(:title, :body, :user_id)
 	end
 end
